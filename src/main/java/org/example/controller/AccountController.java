@@ -6,8 +6,8 @@ import org.example.service.AccountService;
 public class AccountController implements Controller{
     private AccountService accountService;
 
-    public AccountController() {
-        this.accountService = new AccountService();
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     @Override

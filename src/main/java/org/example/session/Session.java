@@ -6,14 +6,10 @@ public class Session {
     private Account loggedInAccount;
 
     public boolean isLoggedIn() {
-        System.out.println("Session.isLoggedIn");
-        System.out.println("loggedInAccount = " + loggedInAccount);
         return loggedInAccount != null;
     }
 
     public Account getLoggedInAccount() {
-        System.out.println("Session.getLoggedInAccount");
-        System.out.println("loggedInAccount = " + loggedInAccount);
         return loggedInAccount;
     }
 
@@ -21,10 +17,7 @@ public class Session {
         if (isLoggedIn()) {
             throw new RuntimeException("이미 로그인 되어 있습니다. ");
         }
-        System.out.println("Session.login");
-        System.out.println("account = " + account);
         this.loggedInAccount = account;
-        System.out.println("loggedInAccount = " + loggedInAccount);
     }
 
     public void logout() {

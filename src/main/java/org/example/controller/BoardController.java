@@ -6,8 +6,8 @@ import org.example.service.BoardService;
 public class BoardController implements Controller{
     private BoardService boardService;
 
-    public BoardController() {
-        this.boardService = new BoardService();
+    public BoardController(BoardService boardService) {
+        this.boardService = boardService;
     }
 
     @Override

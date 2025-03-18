@@ -5,17 +5,29 @@ import org.example.controller.BoardController;
 import org.example.controller.PostController;
 import org.example.request.Request;
 import org.example.request.RequestParser;
+import org.example.service.AccountService;
+import org.example.service.BoardService;
+import org.example.service.PostService;
+import org.example.session.Session;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        RequestParser parser = new RequestParser();
 
-        AccountController accountController = new AccountController();
-        BoardController boardController = new BoardController();
-        PostController postController = new PostController();
+        Session session = new Session();
+        RequestParser parser = new RequestParser(session);
+
+        AccountService accountService = new AccountService();
+        BoardService boardService = new BoardService();
+        PostService postService = new PostService(boardService);
+
+        boardService.setPostService(postService);
+
+        AccountController accountController = new AccountController(accountService);
+        BoardController boardController = new BoardController(boardService);
+        PostController postController = new PostController(postService);
         while (true) {
             System.out.println("a > ");
             String url = sc.nextLine();
@@ -45,7 +57,6 @@ public class Main {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-
-           }
+        }
     }
 }

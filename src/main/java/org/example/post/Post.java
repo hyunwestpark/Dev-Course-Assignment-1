@@ -15,7 +15,6 @@ public class Post {
     private LocalDateTime updatedAt;
 
     public Post(String title, String content, Board board, Account creator) {
-        this.id = id;
         this.title = title;
         this.content = content;
         this.board = board;

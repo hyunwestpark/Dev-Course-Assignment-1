@@ -1,9 +1,16 @@
 package org.example.request;
 
+import org.example.session.Session;
+
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class RequestParser {
+    private Session session;
+
+    public RequestParser(Session session) {
+        this.session = session;
+    }
     public Request parse(String url) {
         if (url == null || !url.startsWith("/")) {
             throw new RuntimeException("유효하지 않은 URL 형식입니다.");
@@ -34,7 +41,10 @@ public class RequestParser {
         String route = routes[1];
         String function = routes[2];
 
-        return new Request(route, function, params);
+        Request request = new Request(route, function, params);
+        request.setSession(this.session);
+
+        return request;
     }
 
 }

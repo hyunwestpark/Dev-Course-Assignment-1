@@ -14,7 +14,6 @@ public class Request {
         this.route = route;
         this.function = function;
         this.parameters = parameters;
-        this.session = new Session();
     }
 
     public String getRoute() {
@@ -31,5 +30,9 @@ public class Request {
 
     public Session getSession() {
         return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
     }
 }

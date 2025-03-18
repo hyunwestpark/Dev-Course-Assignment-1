@@ -7,9 +7,8 @@ import org.example.service.PostService;
 public class PostController implements Controller{
     private PostService postService;
 
-
-    public PostController() {
-        this.postService = new PostService(new BoardService());
+    public PostController(PostService postService) {
+        this.postService = postService;
     }
 
     @Override
